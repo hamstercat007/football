@@ -4,7 +4,25 @@
 $(function() {
   var start = Date.now();
   var gameTime = setInterval(function() {
-    $("#timer").text("You stayed in the game for "+ Math.floor((new Date - start)/1000) + " seconds")
+    const elapsedTime = Math.floor((new Date - start)/1000)
+    let timerText = "You stayed in the game for "+ elapsedTime + " seconds."
+    
+    if (elapsedTime < 7)
+    {
+      timerText += "Don't give up your day job!"
+    }
+    if (elapsedTime >8 && elapsedTime < 12)
+    {
+      timerText += "Keep going, the goal is in sight!"
+    }
+    if (elapsedTime >13 && elapsedTime < 18)
+    {
+      timerText += "You're a hot shot!"
+    }
+    else {
+      $("#timer").text("You are a champion!") 
+    }
+    $("#timer").text(timerText)
   }, 1000)
   
 
@@ -17,8 +35,8 @@ $(function() {
     y: 150, // y's origin is at the top, and = 0.
     // speed: 10,  can use speed and angleIndegrees instead of dx and dy
     // angleInDegrees: 80,
-    dx: .5, //delta = change. Delta x = How much the x position is changing over time.
-    dy: .5, //delta y = how much the y position is changing in pixels when rendered.
+    dx: 3.5, //delta = change. Delta x = How much the x position is changing over time.
+    dy: 3.5, //delta y = how much the y position is changing in pixels when rendered.
     width: 100, //width of football
     height: 100 //height of football
   };
@@ -34,8 +52,11 @@ $(function() {
       const mx = event.x; // position of mouse. The event in this case is the click. x = e.x
       const my = event.y;
       if (mx < football.x) return; //return means stop running this function
+      console.log(1);
       if (my < football.y) return;  //if y position is above football (we click too high), don't do anything.
+      console.log(2);
       if (mx > football.x + football.width) return;
+      console.log(3);
       if (my > football.y + football.height) return;
       console.log("Football clicked!")
       football.dx *= -1.1  //swap the polarity, if -5, becomes 5, we use the minus to switch direction on x axis(left to right) )
