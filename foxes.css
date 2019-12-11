@@ -1,0 +1,29 @@
+html {
+  xcursor:none;
+}
+
+#myCanvas{
+  border:solid;
+  color:blue;
+}
+
+#timer {
+  text-align: center;
+  display: none;
+  position: relative;
+  top: 39px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 25px;
+}
+
+
+/* canvas {
+  cursor: url("/images/foxes.png") 0 0, pointer;
+}  */
+
+
+
+/* cursor:url('/images/foxes.png'), default; */
+
+
+
